@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>HDC Windows Azure Mobile Conference App</title>
+        <link type="text/css" rel="stylesheet" href="./content/bootstrap.min.css">
+    </head>
+    <body style="margin: 15px">
+        
+       <div class="container">
+           <div class="row" >
+               <img style="max-height: 100px" class="span1" src="./images/WAMobileServicesblue.png" alt="Windows Azure Mobile Services" title="Windows Azure Mobile Services">
+                <h1 class="span11">HDC Azure Mobile App</h1>
+                
+           </div>
+           <div  class="row">&nbsp;</div>
+            <div class="row ">
+                <div class="navbar span12">
+                    <ul class="nav">
+                        <li id="sessionsMenuItem"><a href="#" onclick="model.switchView('sessions')">Sessions</a></li>
+                        <li id="speakersMenuItem"><a href="#" onclick="model.switchView('speakers')">Speakers</a></li>
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="row">
+            <div id="sessionContent" class="span12">
+                <a data-toggle="modal" href="#newSessionDialog" class="btn btn-primary btn-large">Add session</a>
+                <!--TODO: add container/template for showing a session-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="speakerContent" class="span12">
+                <a data-toggle="modal" href="#newSpeakerDialog" class="btn btn-primary btn-large">Add speaker</a>
+                <!--TODO: add container/template for showing a speaker-->
+            </div>
+        </div>
+       
+        <div class="row">
+                <div class="navbar navbar-fixed-bottom span10 offset1">
+                    <ul class="nav">
+                        <li><a href="http://www.windowsazure.com/mobile/">More on Azure Mobile</a></li>
+                        <li><a href="http://mattmilner.com/" target="_blank">Matt's Blog</a></li>
+                        <li><a href="http://thinkfirstcodelater.com" target="_blank">Adam's Blog</a></li>
+                        <li class="pull-right dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>Bootstrap theme by Thomas Park - <a href="http://bootswatch.com/slate/">BootSwatch.com</a> </li>
+                            </ul>
+                        </li>
+                    </ul>  
+                </div>
+                
+           </div>
+            
+       
+        <!-- modal for adding a session-->
+        <div class="modal fade" id="newSessionDialog">
+          <div class="modal-dialog" >
+            <div class="modal-content">
+                <form id="addSessionForm">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add session</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Title"><br />
+                        <select id="speakerList">
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!--modal for adding a speaker-->
+        <div class="modal fade" id="newSpeakerDialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form id="addSpeakerForm" class="">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Add speaker</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" placeholder="Speaker name">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+            </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+            </div>
+        <script src="./script/jquery-2.0.0.min.js" type="text/javascript"></script>
+        <script src="./script/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://hdcazureconference.azure-mobile.net/client/MobileServices.Web-1.0.0.js"></script>
+        <script src="./script/index.js" type="text/javascript"></script>
+    </body>
+
+    
+</html>
