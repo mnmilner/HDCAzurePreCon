@@ -5,6 +5,7 @@ function indexViewModel(){
     var self = this;
     self.sessions = [];
     self.speakers = [];
+    self.favorites = [];
     self.mobileClient = new azClient();
     self.dialogs = new common();
 
@@ -22,6 +23,14 @@ function indexViewModel(){
                 $("#speakerContent").show();
                 $("#speakersMenuItem").addClass("active");
                 $("#sessionsMenuItem").removeClass("active");
+                break;
+            case "favorites":
+                $("#sessionContent").hide();
+                $("#speakerContent").hide();
+                $("#favoritesContent").show();
+                $("#speakersMenuItem").removeClass("active");
+                $("#sessionsMenuItem").removeClass("active");
+                $("#favoritesMenuItem").addClass("active");
                 break;
         }
 
@@ -60,6 +69,18 @@ function indexViewModel(){
                         }
                     });
                 }
+                break;
+            case "favorites":
+                self.mobileClient.getFavorites(function (results, error) {
+                    if (error === undefined) {
+                        self.favorites = results;
+                        var favoritesHtml = $.templates("#favoriteTemplate").render(self.favorites);
+                        document.getElementById("favorites").innerHTML = favoritesHtml;
+                    }
+                    else {
+                        self.dialogs.showError(error);
+                    }
+                });
                 break;
         }
     };

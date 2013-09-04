@@ -26,6 +26,7 @@
                     <ul class="nav">
                         <li id="sessionsMenuItem"><a href="#" onclick="model.switchView('sessions')">Sessions</a></li>
                         <li id="speakersMenuItem"><a href="#" onclick="model.switchView('speakers')">Speakers</a></li>
+                        <li id="favoritesMenuItem"><a href="#" onclick="model.switchView('favorites')">Favorites</a></li>
                     </ul>
                 </div>
                 
@@ -54,6 +55,15 @@
             </div>
         </div>
        
+        <div class="row">
+            <div id="favoritesContent" class="span12">
+                <div id="favorites">
+                    <!-- templated content will go here-->
+
+                </div>
+            </div>
+        </div>
+
         <div class="row">
                 <div class="navbar  span8 offset2" style="position: fixed;top: auto; bottom:0" >
                     <ul class="nav">
@@ -142,11 +152,20 @@
             </div>
         </script>
 
+        <script type="text/x-jsrender" id="favoriteTemplate">
+            <div class="row well" id="favorite{{:id}}">
+                <div class="span7">
+                        <h3>{{:title}}</h3>
+                        <h4>{{:name}}</h4>
+                        <div>{{:description}}</div>
+                </div>
+            </div>
+        </script> 
 
         <script src="./script/jquery-2.0.0.min.js" type="text/javascript"></script>
         <script src="./script/bootstrap.min.js" type="text/javascript"></script>
         <script src="./script/jsrender.min.js" type="text/javascript"></script>
-        <script src="https://<YOUR MOBILE SERVICE NAME>.azure-mobile.net/client/MobileServices.Web-1.0.0.js"></script>
+        <script src="https://hdc13.azure-mobile.net/client/MobileServices.Web-1.0.0.js"></script>
         <script src="./script/common.js" type="text/javascript"></script>
         <script src="./script/client.js" type="text/javascript"></script>
         <script src="./script/index.js" type="text/javascript"></script>
