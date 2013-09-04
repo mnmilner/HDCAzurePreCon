@@ -3,7 +3,7 @@
 function azClient (){
     var self = this;
 
-    self.client = new WindowsAzure.MobileServiceClient("https://hdcazureconference.azure-mobile.net","OemRgSqxYhcDuTcOiHSwkDQdidZHBS35");
+    self.client = new WindowsAzure.MobileServiceClient("https://hdc13.azure-mobile.net","JYfNaXuTCOjTJKRAUwmoEwhMgPAjna42");
 
     //get all the sessions
     self.getSessions = function (callback) {
@@ -31,6 +31,20 @@ function azClient (){
         //callback([{ "id": "1", "name": "matt milner", "twitter": "milnertweet" },
         //{ "id": "2", "name": "adam grocholski", "twitter": "aghoski"}]);
     };
+
+    self.getFavorites = function (callback){
+        self.client.invokeApi("myFavoriteSessions", {
+            method: "get",
+            body: null
+        }).done(
+            function (result){
+                callback(JSON.parse(result.responseText));
+            },
+            function (error){
+                callback(null, error);
+            }
+        );
+    }
 
     //add a new speaker
     self.addSpeaker = function (speakerName, speakerTwitter, callback) {

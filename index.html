@@ -26,6 +26,7 @@
                     <ul class="nav">
                         <li id="sessionsMenuItem"><a href="#" onclick="model.switchView('sessions')">Sessions</a></li>
                         <li id="speakersMenuItem"><a href="#" onclick="model.switchView('speakers')">Speakers</a></li>
+                        <li id="favoritesMenuItem"><a href="#" onclick="model.switchView('favorites')">Favorites</a></li>
                     </ul>
                 </div>
                 
@@ -54,6 +55,15 @@
             </div>
         </div>
        
+        <div class="row">
+            <div id="favoritesContent" class="span12">
+                <div id="favorites">
+                    <!-- templated content will go here-->
+
+                </div>
+            </div>
+        </div>
+
         <div class="row">
                 <div class="navbar  span8 offset2" style="position: fixed;top: auto; bottom:0" >
                     <ul class="nav">
@@ -89,7 +99,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" onclick="javascript:model.addSession()">Create</button>
+                        <button type="button" class="btn btn-primary" onclick="javascript:model.addSession()">Create</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -111,7 +121,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="javasript:model.addSpeaker()">Create</button>
+                    <button type="button" class="btn btn-primary" onclick="javasript:model.addSpeaker()">Create</button>
                   </div>
                     </form>
             </div><!-- /.modal-content -->
@@ -122,7 +132,7 @@
         <script type="text/x-jsrender" id="sessionTemplate">
             <div class="row well" id="session{{:id}}">
                 <div class="span7">
-                        <h3>{{:title}} ({{:speakerName}})</h3>
+                        <h3>{{:title}} ({{:name}})</h3>
                         <div>{{:description}}</div>
                 </div>
                 <div class="span3">
@@ -142,11 +152,20 @@
             </div>
         </script>
 
+        <script type="text/x-jsrender" id="favoriteTemplate">
+            <div class="row well" id="favorite{{:id}}">
+                <div class="span7">
+                        <h3>{{:title}}</h3>
+                        <h4>{{:name}}</h4>
+                        <div>{{:description}}</div>
+                </div>
+            </div>
+        </script>  
 
         <script src="./script/jquery-2.0.0.min.js" type="text/javascript"></script>
         <script src="./script/bootstrap.min.js" type="text/javascript"></script>
         <script src="./script/jsrender.min.js" type="text/javascript"></script>
-        <script src="https://hdcazureconference.azure-mobile.net/client/MobileServices.Web-1.0.0.js"></script>
+        <script src="https://[[YOUR MOBILE SERIVCE NAME]].azure-mobile.net/client/MobileServices.Web-1.0.0.js"></script>
         <script src="./script/common.js" type="text/javascript"></script>
         <script src="./script/client.js" type="text/javascript"></script>
         <script src="./script/index.js" type="text/javascript"></script>

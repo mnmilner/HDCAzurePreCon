@@ -5,6 +5,7 @@ function indexViewModel(){
     var self = this;
     self.sessions = [];
     self.speakers = [];
+    self.favortes = [];
     self.mobileClient = new azClient();
     self.dialogs = new common();
 
@@ -14,14 +15,26 @@ function indexViewModel(){
             case "sessions":
                 $("#sessionContent").show();
                 $("#speakerContent").hide();
+                $("#favoritesContent").hide();
                 $("#sessionsMenuItem").addClass("active");
                 $("#speakersMenuItem").removeClass("active");
+                $("#favoritesMenuItem").removeClass("active");
                 break;
             case "speakers":
                 $("#sessionContent").hide();
                 $("#speakerContent").show();
+                $("#favoritesContent").hide();
                 $("#speakersMenuItem").addClass("active");
                 $("#sessionsMenuItem").removeClass("active");
+                $("#favoritesMenuItem").removeClass("active");
+                break;
+            case "favorites":
+                $("#sessionContent").hide();
+                $("#speakerContent").hide();
+                $("#favoritesContent").show();
+                $("#speakersMenuItem").removeClass("active");
+                $("#sessionsMenuItem").removeClass("active");
+                $("#favoritesMenuItem").addClass("active");
                 break;
         }
 
@@ -60,6 +73,18 @@ function indexViewModel(){
                         }
                     });
                 }
+                break;
+            case "favorites":
+                self.mobileClient.getFavorites(function (results, error) {
+                    if (error === undefined) {
+                        self.favorites = results;
+                        var favoritesHtml = $.templates("#favoriteTemplate").render(self.favorites);
+                        document.getElementById("favorites").innerHTML = favoritesHtml;
+                    }
+                    else {
+                        self.dialogs.showError(error);
+                    }
+                });
                 break;
         }
     };
