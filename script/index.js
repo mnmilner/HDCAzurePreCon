@@ -29,10 +29,10 @@ function indexViewModel(){
     };
 
     ///loads the sessions or speakers if they are not already populated
-    self.loadContent = function (view) {
+    self.loadContent = function (view, force) {
         switch (view) {
             case "sessions":
-                if (self.sessions === undefined || self.sessions.length == 0) {
+                if (self.sessions === undefined || self.sessions.length == 0 || force === true) {
 
                     self.mobileClient.getSessions(function (results, error) {
                         if (error === undefined) {
@@ -149,8 +149,10 @@ function indexViewModel(){
 
     self.login = function () {
         self.mobileClient.login(function (userName, error) {
-            if (error === null) {
-                $("#userId").value(userName);
+            if (error === undefined) {
+                //show username and reload sessions to show favorites
+                $("#userId").text(userName);
+                self.loadContent("sessions", true);
             }
             else {
                 self.dialogs.showError(error);
