@@ -3,7 +3,7 @@
 function azClient (){
     var self = this;
 
-    self.client = new WindowsAzure.MobileServiceClient("https://hdcazureconference.azure-mobile.net","[[YOUR APPLICATION KEY HERE]]");
+    self.client = new WindowsAzure.MobileServiceClient("https://<YOUR AZURE MOBILE SERVICE NAME>.azure-mobile.net","[[YOUR APPLICATION KEY HERE]]");
 
     //get all the sessions
     self.getSessions = function (callback) {
@@ -97,7 +97,7 @@ function azClient (){
     };
 
     self.login = function (callback) {
-        self.client.login("twitter").done(function (results) {
+        self.client.login("windowsazureactivedirectory").done(function (results) {
             if (results.userId !== null) {
                 callback(results.userId);
             }
