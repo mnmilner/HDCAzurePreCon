@@ -3,7 +3,7 @@
 function azClient (){
     var self = this;
 
-    self.client = new WindowsAzure.MobileServiceClient("<YOUR AZURE MOBILE SERVICE URL>",",<YOUR AZURE MOBILE SERVICE KEY>");
+    self.client = new WindowsAzure.MobileServiceClient("https://<YOUR AZURE MOBILE SERVICE NAME>.azure-mobile.net","<YOUR AZURE MOBILE SERVICE KEY>");
 
     //get all the sessions
     self.getSessions = function (callback) {
